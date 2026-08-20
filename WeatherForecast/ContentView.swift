@@ -9,13 +9,22 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        HStack {
-            ForEach(forecasts) { forcast in DayForecast(forcast: forcast) }}
-        
+        ForeCastContainer()
     }
 }
 
-struct DayForecast: View {
+struct ForeCastContainer : View {
+    @State private var forcasts: [ForeCast] = []
+    
+    var body: some View {
+        HStack {
+            ForEach(forecasts) { forcast in ForecastRow(forcast: forcast) }
+        }
+        
+      }
+}
+
+struct ForecastRow: View {
     let forcast: ForeCast
     
     var body: some View {
